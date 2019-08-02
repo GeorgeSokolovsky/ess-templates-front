@@ -1,0 +1,14 @@
+<p>This is a registration form!</p>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
+    <div class="row">
+        <label for="login">Ваш логин</label>
+        <input id="login" formControlName="login" />
+    </div>
+    <div class="row">
+        <label for="password">Ваш пароль</label>
+        <input id="password" type="password" formControlName="password" />
+    </div>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>
