@@ -6,20 +6,18 @@ const routes: Routes = [
         path: 'registration',
         loadChildren: () =>
             import('./registration/registration.module').then(
-                ({RegistrationModule}) => RegistrationModule
+                module => module.RegistrationModule
             )
     },
     {
         path: 'sign-in',
         loadChildren: () =>
-            import('./sign-in/sign-in.module').then(({SignInModule}) => SignInModule)
+            import('./sign-in/sign-in.module').then(module => module.SignInModule)
     },
     {
         path: 'templates',
         loadChildren: () =>
-            import('./templates/templates.module').then(
-                ({TemplatesModule}) => TemplatesModule
-            )
+            import('./templates/templates.module').then(module => module.TemplatesModule)
     },
     {
         path: '',

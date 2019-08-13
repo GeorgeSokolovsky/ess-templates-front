@@ -12,7 +12,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "format": "prettier --write \"src/**/*.?(js|ts|html|scss|json)\"",
-        "postinstall": "ng build --prod"
+        "postinstall": "ng build --prod --aot"
     },
     "private": true,
     "dependencies": {
