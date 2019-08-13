@@ -1,14 +1,69 @@
-<p>This is a registration form!</p>
+<ess-auth-toolbar></ess-auth-toolbar>
 
-<form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
+<div class="container">
     <div class="row">
-        <label for="login">Ваш логин</label>
-        <input id="login" formControlName="login" />
-    </div>
-    <div class="row">
-        <label for="password">Ваш пароль</label>
-        <input id="password" type="password" formControlName="password" />
-    </div>
+        <div class="offset-4"></div>
+        <div class="col-4">
+            <form class="form" [formGroup]="registrationForm" (ngSubmit)="onRegister()">
+                <mat-form-field>
+                    <input
+                        formControlName="login"
+                        placeholder="Ваш логин"
+                        matInput
+                        #login
+                    />
+                    <mat-hint align="end">{{ login.value?.length || 0 }} / 20</mat-hint>
+                </mat-form-field>
+                <mat-form-field>
+                    <input
+                        formControlName="password"
+                        placeholder="Ваш пароль"
+                        matInput
+                        [type]="passwordHidden ? 'password' : 'text'"
+                    />
+                    <button
+                        mat-icon-button
+                        matSuffix
+                        [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="passwordHidden"
+                        (click)="passwordHidden = !passwordHidden"
+                    >
+                        <mat-icon>
+                            {{ passwordHidden ? 'visibility_off' : 'visibility' }}
+                        </mat-icon>
+                    </button>
+                </mat-form-field>
+                <mat-form-field>
+                    <input
+                        formControlName="confirmPassword"
+                        placeholder="Повторите пароль"
+                        matInput
+                        [type]="confirmPasswordHidden ? 'password' : 'text'"
+                    />
+                    <button
+                        mat-icon-button
+                        matSuffix
+                        [attr.aria-label]="'Hide confirm password'"
+                        [attr.aria-pressed]="confirmPasswordHidden"
+                        (click)="confirmPasswordHidden = !confirmPasswordHidden"
+                    >
+                        <mat-icon>
+                            {{ confirmPasswordHidden ? 'visibility_off' : 'visibility' }}
+                        </mat-icon>
+                    </button>
+                </mat-form-field>
 
-    <button type="submit">Зарегистрироваться</button>
-</form>
+                <button
+                    type="submit"
+                    class="registration-button"
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="registrationForm.invalid"
+                >
+                    Зарегистрироваться
+                </button>
+            </form>
+        </div>
+        <div class="offset-4"></div>
+    </div>
+</div>

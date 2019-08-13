@@ -1,0 +1,34 @@
+@import './variables';
+
+$columns: 12;
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin column-styles($i) {
+    width: ($i * 100%) / $columns;
+    padding-left: $unit;
+    padding-right: $unit;
+}
+
+@mixin offset-styles($i) {
+    margin-left: ($i * 100%) / $columns;
+}
+
+@mixin columns {
+    @for $i from 1 through $columns {
+        .col-#{$i} {
+            @include column-styles($i);
+        }
+    }
+}
+
+@mixin offsets {
+    @for $i from 1 through $columns {
+        .offset-#{$i} {
+            @include offset-styles($i);
+        }
+    }
+}

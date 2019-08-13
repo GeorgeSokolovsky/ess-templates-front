@@ -10,6 +10,18 @@ const routes: Routes = [
             )
     },
     {
+        path: 'sign-in',
+        loadChildren: () =>
+            import('./sign-in/sign-in.module').then(({SignInModule}) => SignInModule)
+    },
+    {
+        path: 'templates',
+        loadChildren: () =>
+            import('./templates/templates.module').then(
+                ({TemplatesModule}) => TemplatesModule
+            )
+    },
+    {
         path: '',
         redirectTo: 'registration',
         pathMatch: 'full'
