@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Apollo} from 'apollo-angular';
 import {Observable} from 'rxjs';
-import {Templates} from '../core/models/template.model';
+import {Templates} from '../../core/models/template.model';
 import {templatesListQuery} from './list/gql/templatesList.query';
 import {ApolloQueryResult} from 'apollo-client';
 
@@ -9,7 +9,7 @@ import {ApolloQueryResult} from 'apollo-client';
 export class TemplatesService {
     constructor(private readonly apollo: Apollo) {}
 
-    list(): Observable<ApolloQueryResult<Templates>> {
+    list(): Observable<ApolloQueryResult<{templates: Templates}>> {
         return this.apollo.query({
             query: templatesListQuery
         });

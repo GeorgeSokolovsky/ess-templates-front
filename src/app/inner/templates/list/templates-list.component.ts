@@ -11,7 +11,9 @@ import {map} from 'rxjs/operators';
 export class TemplatesListComponent implements OnInit {
     templates$ = this.templatesService
         .list()
-        .pipe(map(value => value.data.reduce((res, next) => [...res, next], [])));
+        .pipe(
+            map(value => value.data.templates.reduce((res, next) => [...res, next], []))
+        );
 
     constructor(private readonly templatesService: TemplatesService) {}
 

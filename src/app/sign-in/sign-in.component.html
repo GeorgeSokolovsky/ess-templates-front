@@ -1,1 +1,43 @@
-<p>signin works!</p>
+<ess-auth-toolbar></ess-auth-toolbar>
+
+<div class="container">
+    <div class="row">
+        <div class="offset-4"></div>
+        <div class="col-4">
+            <form class="form" [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+                <mat-form-field>
+                    <input formControlName="login" placeholder="Ваш логин" matInput />
+                </mat-form-field>
+                <mat-form-field>
+                    <input
+                        formControlName="password"
+                        placeholder="Ваш пароль"
+                        matInput
+                        [type]="passwordHidden ? 'password' : 'text'"
+                    />
+                    <button
+                        mat-icon-button
+                        matSuffix
+                        [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="passwordHidden"
+                        (click)="passwordHidden = !passwordHidden"
+                    >
+                        <mat-icon>
+                            {{ passwordHidden ? 'visibility_off' : 'visibility' }}
+                        </mat-icon>
+                    </button>
+                </mat-form-field>
+                <button
+                    type="submit"
+                    class="sign-in-button"
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="signInForm.invalid"
+                >
+                    Войти
+                </button>
+            </form>
+        </div>
+        <div class="offset-4"></div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import {AuthGuard} from './core/guards/auth.guard';
 
 const routes: Routes = [
     {
@@ -15,13 +16,21 @@ const routes: Routes = [
             import('./sign-in/sign-in.module').then(module => module.SignInModule)
     },
     {
-        path: 'templates',
-        loadChildren: () =>
-            import('./templates/templates.module').then(module => module.TemplatesModule)
+        path: 'inner',
+        canActivateChild: [AuthGuard],
+        children: [
+            {
+                path: 'templates',
+                loadChildren: () =>
+                    import('./inner/templates/templates.module').then(
+                        module => module.TemplatesModule
+                    )
+            }
+        ]
     },
     {
         path: '',
-        redirectTo: 'registration',
+        redirectTo: 'sign-in',
         pathMatch: 'full'
     }
 ];
