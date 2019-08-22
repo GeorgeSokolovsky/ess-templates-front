@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+@import '../../styles/colors';
+
+:host {
+    display: block;
+    @include mat-elevation(2);
+}
+
+.logo-text {
+    color: $text-white;
+}
+
+.links {
+    margin-left: auto;
+}
+
+.link {
+    color: $text-white;
+}
+
+.active {
+    font-weight: bold;
+}

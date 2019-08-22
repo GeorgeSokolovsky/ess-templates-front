@@ -43,7 +43,7 @@ export class SignInComponent implements OnInit, OnDestroy {
             .signIn(login, password)
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
-                this.router.navigateByUrl('/inner/templates');
+                this.router.navigateByUrl('/templates');
             });
     }
 }

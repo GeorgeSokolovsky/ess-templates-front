@@ -1,3 +1,9 @@
-<div *ngFor="let template of templates$ | async">
-    <div>{{template.name}}</div>
+<ess-inner-toolbar></ess-inner-toolbar>
+
+<div class="content">
+    Шаблоны
+
+    <div *ngFor="let template of templates$ | async">
+        <div>{{ template.name }}</div>
+    </div>
 </div>
