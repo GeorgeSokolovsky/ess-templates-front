@@ -16,6 +16,19 @@ const routes: Routes = [
             import('./sign-in/sign-in.module').then(module => module.SignInModule)
     },
     {
+        path: 'fields',
+        canActivateChild: [AuthGuard],
+        children: [
+            {
+                path: '',
+                loadChildren: () =>
+                    import('./inner/fields/fields.module').then(
+                        module => module.FieldsModule
+                    )
+            }
+        ]
+    },
+    {
         path: 'templates',
         canActivateChild: [AuthGuard],
         children: [

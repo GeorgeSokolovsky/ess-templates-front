@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Apollo} from 'apollo-angular';
 import {Observable} from 'rxjs';
 import {Templates} from '../../core/models/template.model';
-import {templatesListQuery} from './list/gql/templatesList.query';
+import {templatesListQuery} from './list/gql/templates-list.query';
 import {ApolloQueryResult} from 'apollo-client';
 
 @Injectable()

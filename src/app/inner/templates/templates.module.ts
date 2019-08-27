@@ -6,7 +6,6 @@ import {TemplatesService} from './templates.service';
 
 @NgModule({
     imports: [TemplatesListModule, TemplatesRoutingModule],
-    declarations: [],
     providers: [TemplatesService]
 })
 export class TemplatesModule {}

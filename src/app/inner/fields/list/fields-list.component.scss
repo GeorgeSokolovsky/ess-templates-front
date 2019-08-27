@@ -1,0 +1,23 @@
+@import '../../../core/styles/variables';
+@import '../../../core/styles/colors';
+
+:host {
+    display: block;
+}
+
+.content {
+    padding: $unit * 5;
+}
+
+.card {
+    & + & {
+        margin-top: $unit * 3;
+    }
+}
+
+.add-icon {
+    position: fixed;
+    bottom: $unit * 4;
+    right: $unit * 4;
+    color: $text-white;
+}
