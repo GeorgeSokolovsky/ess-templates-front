@@ -9,7 +9,7 @@ import {
     MatIconModule,
     MatListModule
 } from '@angular/material';
-import {CreateFieldFormModule} from './create/create-field-form.module';
+import {FieldFormModule} from './form/field-form.module';
 
 @NgModule({
     imports: [
@@ -20,7 +20,7 @@ import {CreateFieldFormModule} from './create/create-field-form.module';
         MatButtonModule,
         MatIconModule,
         MatDialogModule,
-        CreateFieldFormModule
+        FieldFormModule
     ],
     declarations: [FieldsListComponent],
     exports: [FieldsListComponent]

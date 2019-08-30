@@ -2,11 +2,13 @@ import {Injectable} from '@angular/core';
 import {Apollo} from 'apollo-angular';
 import {Observable} from 'rxjs';
 import {ApolloQueryResult} from 'apollo-client';
-import {Fields} from '../../core/models/field.model';
+import {Fields, IField} from '../../core/models/field.model';
 import {fieldsListQuery} from './list/gql/fields-list.query';
-import {createFieldMutation} from './list/create/gql/create-field.mutation';
+import {createFieldMutation} from './list/form/gql/create-field.mutation';
 import {ID} from '../../core/models/id.model';
 import {ICreateFieldInput} from './models/create-field-input.interface';
+import {IUpdateFieldInput} from './models/update-field-input.interface';
+import {updateFieldMutation} from './list/form/gql/update-field.mutation';
 
 @Injectable()
 export class FieldsService {
@@ -22,6 +24,21 @@ export class FieldsService {
             mutation: createFieldMutation,
             variables: {
                 createFieldInput
+            },
+            refetchQueries: [
+                {
+                    query: fieldsListQuery
+                }
+            ]
+        });
+    }
+
+    update(id: ID, updateFieldInput: IUpdateFieldInput): Observable<{_id: ID}> {
+        return this.apollo.mutate({
+            mutation: updateFieldMutation,
+            variables: {
+                id,
+                updateFieldInput
             },
             refetchQueries: [
                 {

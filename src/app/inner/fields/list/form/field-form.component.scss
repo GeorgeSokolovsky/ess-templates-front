@@ -1,0 +1,37 @@
+@import '../../../../core/styles/variables';
+@import '../../../../core/styles/colors';
+
+:host {
+    display: block;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: 1.5em;
+}
+
+.content {
+    padding-top: 4 * $unit;
+}
+
+.form-field {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5 * $unit;
+}
+
+.cancel-button {
+    margin-right: 3 * $unit;
+}
+
+.create-button {
+    color: $text-white;
+}

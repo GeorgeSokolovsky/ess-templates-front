@@ -1,0 +1,30 @@
+<div class="header">
+    <div class="title">
+        {{ updateMode ? 'Изменить поле' : 'Новое поле' }}
+    </div>
+</div>
+
+<div class="content">
+    <form [formGroup]="fieldForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Введите название поля" formControlName="name" />
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Введите тип поля" formControlName="type" />
+        </mat-form-field>
+
+        <div class="actions">
+            <button
+                mat-button
+                class="cancel-button"
+                type="button"
+                [mat-dialog-close]="false"
+            >
+                Отмена
+            </button>
+            <button mat-raised-button class="create-button" color="primary" type="submit">
+                {{ updateMode ? 'Обновить' : 'Создать' }}
+            </button>
+        </div>
+    </form>
+</div>

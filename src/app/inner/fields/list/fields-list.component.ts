@@ -2,7 +2,11 @@ import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {FieldsService} from '../fields.service';
 import {map} from 'rxjs/operators';
 import {MatDialog} from '@angular/material';
-import {CreateFieldFormComponent} from './create/create-field-form.component';
+import {FieldFormComponent} from './form/field-form.component';
+import {IField} from '../../../core/models/field.model';
+
+const FIELD_FORM_DIALOG_WIDTH = '400px';
+const FIELD_FORM_DIALOG_HEIGHT = '300px';
 
 @Component({
     selector: 'ess-fields-list',
@@ -21,9 +25,17 @@ export class FieldsListComponent implements OnInit {
     ngOnInit() {}
 
     onCreateField() {
-        this.dialog.open(CreateFieldFormComponent, {
-            width: '200px',
-            height: '400px'
+        this.dialog.open(FieldFormComponent, {
+            width: FIELD_FORM_DIALOG_WIDTH,
+            height: FIELD_FORM_DIALOG_HEIGHT
+        });
+    }
+
+    onEditField(field: IField) {
+        this.dialog.open(FieldFormComponent, {
+            width: FIELD_FORM_DIALOG_WIDTH,
+            height: FIELD_FORM_DIALOG_HEIGHT,
+            data: field
         });
     }
 }
