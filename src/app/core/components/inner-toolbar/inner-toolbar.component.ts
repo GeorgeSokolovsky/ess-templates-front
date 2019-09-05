@@ -1,4 +1,6 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {TOKEN_KEY} from '../../tokens/auth.token';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'ess-inner-toolbar',
@@ -6,8 +8,12 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
     styleUrls: ['./inner-toolbar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class InnerToolbar implements OnInit {
-    constructor() {}
+export class InnerToolbar {
+    constructor(private readonly router: Router) {}
 
-    ngOnInit() {}
+    onSignOut() {
+        localStorage.removeItem(TOKEN_KEY);
+
+        this.router.navigateByUrl('/sign-in');
+    }
 }

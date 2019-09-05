@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {GraphQLModule} from './graphql.module';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         BrowserAnimationsModule,
         AppRoutingModule,
         GraphQLModule,
-        HttpClientModule
+        HttpClientModule,
+        MatSnackBarModule
     ],
     declarations: [AppComponent],
     providers: [],

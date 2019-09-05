@@ -5,11 +5,16 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
 import {environment} from '../environments/environment';
 import {ApolloClientOptions} from 'apollo-client';
 import {ApolloLink} from 'apollo-link';
+import {onError} from 'apollo-link-error';
 import {TOKEN_KEY} from './core/tokens/auth.token';
+import {MatSnackBar} from '@angular/material';
 
 const uri = environment.graphQLURI;
 
-export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
+export function createApollo(
+    httpLink: HttpLink,
+    snackBar: MatSnackBar
+): ApolloClientOptions<any> {
     const authLink = new ApolloLink((operation, forward) => {
         const token = localStorage.getItem(TOKEN_KEY);
 
@@ -22,8 +27,29 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
         return forward(operation);
     });
 
+    const errorLink = onError(({graphQLErrors, networkError}) => {
+        if (graphQLErrors) {
+            graphQLErrors.map(({message}) => {
+                const messageToShow = message.message
+                    ? Object.values(message.message[0].constraints).reduce(
+                          (result, next) => `${result} ${next}`
+                      )
+                    : message;
+
+                return snackBar.open(messageToShow, 'Ok', {
+                    horizontalPosition: 'right',
+                    verticalPosition: 'top'
+                });
+            });
+        }
+
+        if (networkError) {
+            snackBar.open(`[Network error]: ${networkError}`);
+        }
+    });
+
     return {
-        link: authLink.concat(httpLink.create({uri})),
+        link: ApolloLink.from([authLink, errorLink, httpLink.create({uri})]),
         cache: new InMemoryCache()
     };
 }
@@ -34,7 +60,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
         {
             provide: APOLLO_OPTIONS,
             useFactory: createApollo,
-            deps: [HttpLink]
+            deps: [HttpLink, MatSnackBar]
         }
     ]
 })
