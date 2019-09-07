@@ -6,8 +6,8 @@ import {Fields, IField} from '../../core/models/field.model';
 import {fieldsListQuery} from './list/gql/fields-list.query';
 import {createFieldMutation} from './list/form/gql/create-field.mutation';
 import {ID} from '../../core/models/id.model';
-import {ICreateFieldInput} from './models/create-field-input.interface';
-import {IUpdateFieldInput} from './models/update-field-input.interface';
+import {ICreateFieldInput} from './dto/create-field-input.interface';
+import {IUpdateFieldInput} from './dto/update-field-input.interface';
 import {updateFieldMutation} from './list/form/gql/update-field.mutation';
 
 @Injectable()

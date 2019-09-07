@@ -29,6 +29,19 @@ const routes: Routes = [
         ]
     },
     {
+        path: 'validators',
+        canActivateChild: [AuthGuard],
+        children: [
+            {
+                path: '',
+                loadChildren: () =>
+                    import('./inner/validators/validators.module').then(
+                        module => module.ValidatorsModule
+                    )
+            }
+        ]
+    },
+    {
         path: 'templates',
         canActivateChild: [AuthGuard],
         children: [
