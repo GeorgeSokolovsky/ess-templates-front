@@ -1,6 +1,10 @@
 @import '../../../core/styles/variables';
 @import '../../../core/styles/colors';
 
+:host {
+    display: block;
+}
+
 .add-icon {
     position: fixed;
     bottom: $unit * 4;
