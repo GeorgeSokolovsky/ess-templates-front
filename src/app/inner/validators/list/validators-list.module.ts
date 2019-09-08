@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
     MatButtonModule,
-    MatCardModule,
     MatDialogModule,
     MatIconModule,
     MatListModule
@@ -10,17 +9,18 @@ import {
 import {ValidatorsListComponent} from './validators-list.component';
 import {InnerToolbarModule} from '../../../core/components/inner-toolbar/inner-toolbar.module';
 import {ValidatorFormModule} from './form/validator-form.module';
+import {CardsListModule} from '../../../core/components/cards-list/cards-list.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        MatCardModule,
         MatListModule,
         MatButtonModule,
         MatIconModule,
         MatDialogModule,
         ValidatorFormModule,
-        InnerToolbarModule
+        InnerToolbarModule,
+        CardsListModule
     ],
     declarations: [ValidatorsListComponent],
     exports: [ValidatorsListComponent]

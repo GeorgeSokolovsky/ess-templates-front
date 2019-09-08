@@ -1,0 +1,32 @@
+@import '~@angular/material/theming';
+@import '../../../core/styles/variables';
+@import '../../../core/styles/colors';
+
+:host {
+    display: block;
+}
+
+.content {
+    padding: 5 * $unit;
+}
+
+.title {
+    padding-left: 5 * $unit;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    @include mat-elevation(3);
+
+    flex: 0 1 25%;
+    margin: $unit 4 * $unit 4 * $unit 4 * $unit;
+
+    &:nth-child(3n) {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
