@@ -1,0 +1,25 @@
+<ess-inner-toolbar></ess-inner-toolbar>
+
+<ess-cards-list
+    title="Все доступные участники для шаблонов"
+    [items]="participants$ | async"
+    [cardHeader]="cardHeader"
+    [cardContent]="cardContent"
+    (editItem)="onEditParticipant($event)"
+>
+</ess-cards-list>
+
+<ng-template #cardHeader let-participant>Участник</ng-template>
+<ng-template #cardContent let-participant>
+    <mat-list>
+        <mat-list-item>Название участника - {{ participant.name }}</mat-list-item>
+        <mat-list-item>Роль - {{ participant.role }}</mat-list-item>
+        <mat-list-item>
+            Валидаторы - {{ participant.validators | serialize: 'rule' }}
+        </mat-list-item>
+    </mat-list>
+</ng-template>
+
+<button class="add-icon" mat-fab (click)="onCreateParticipant()">
+    <mat-icon>plus_one</mat-icon>
+</button>

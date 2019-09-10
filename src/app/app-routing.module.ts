@@ -42,6 +42,19 @@ const routes: Routes = [
         ]
     },
     {
+        path: 'participants',
+        canActivateChild: [AuthGuard],
+        children: [
+            {
+                path: '',
+                loadChildren: () =>
+                    import('./inner/participants/participants.module').then(
+                        module => module.ParticipantsModule
+                    )
+            }
+        ]
+    },
+    {
         path: 'templates',
         canActivateChild: [AuthGuard],
         children: [
